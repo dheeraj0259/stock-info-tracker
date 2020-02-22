@@ -1,34 +1,34 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { getDataRequest } from './actions/data'; 
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { getDataRequest } from "./actions/data";
 
-class App extends Component {    
+class App extends Component {
   componentDidMount() {
-    this.props.getData();
+    const { getData } = this.props;
+    getData();
   }
 
   render() {
-    return(
+    const { data } = this.props;
+    return (
       <div>
-        <h1>
-          {this.props.data}
-        </h1>
+        <h1>{data}</h1>
       </div>
-    )
+    );
   }
 }
 
 // redux providing state takeover
-const mapStateToProps = (state) => {
-    return {
-      data: state.data.test
-    }
-}
+const mapStateToProps = state => {
+  return {
+    data: state.data.test
+  };
+};
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     getData: () => dispatch(getDataRequest())
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)  
+export default connect(mapStateToProps, mapDispatchToProps)(App);

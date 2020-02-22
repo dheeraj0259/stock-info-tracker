@@ -1,31 +1,30 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
 
-import reducers from './reducers';
-import App from './App';
-import Home from './pages/Home'
-import Login from './pages/Login'
-import Notfound from './components/notfound'
-
+import reducers from "./reducers";
+import App from "./App";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Notfound from "./components/notfound";
 
 const store = createStore(reducers);
 
 const routes = (
-    <Provider store={store}>
+  <Provider store={store}>
     <Router>
-    <div>
-    <Switch>
-      <Route exact path="/" component={App} />
-      <Route path="/home" component={Home} />
-      <Route path="/login" component={Login} />
-      <Route component={Notfound} />
-      </Switch>
-    </div>
-  </Router>
+      <div>
+        <Switch>
+          <Route exact path="/" component={App} />
+          <Route path="/home" component={Home} />
+          <Route path="/login" component={Login} />
+          <Route component={Notfound} />
+        </Switch>
+      </div>
+    </Router>
   </Provider>
-)
+);
 
-ReactDOM.render( routes, document.getElementById('root') );
+ReactDOM.render(routes, document.getElementById("root"));
