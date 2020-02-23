@@ -10,7 +10,7 @@ class App extends Component {
 
   render() {
     const { data } = this.props;
-    return <h1>{data}</h1>;
+    return <h1>{data} Welcome to Home page</h1>;
   }
 }
 

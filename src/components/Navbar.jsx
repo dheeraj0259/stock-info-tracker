@@ -9,7 +9,7 @@ export default function Navbar() {
       <AppBar style={{ background: "black" }}>
         <Toolbar>
           <Link
-            to="/stock-info-tracker/home"
+            to="/stock-info-tracker/"
             style={{ color: "white", textDecoration: "none" }}
           >
             <IconButton edge="start" color="inherit" aria-label="menu">

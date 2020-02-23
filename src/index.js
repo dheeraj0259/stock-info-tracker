@@ -21,7 +21,6 @@ const routes = (
         <Navbar />
         <Switch>
           <Route exact path={`/${baseUrl}`} component={App} />
-          <Route path={`/${baseUrl}/home`} component={Home} />
           <Route path={`/${baseUrl}/login`} component={Login} />
           <Route component={Notfound} />
         </Switch>
