@@ -6,7 +6,7 @@ import { createStore } from "redux";
 
 import reducers from "./reducers";
 import App from "./App";
-import Home from "./pages/Home";
+import "./index.scss";
 import Login from "./pages/Login";
 import Notfound from "./components/notfound";
 import Navbar from "./components/Navbar";

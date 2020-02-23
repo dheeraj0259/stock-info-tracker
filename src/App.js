@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getDataRequest } from "./actions/data";
-import "./App.css";
+
+import "./App.scss";
 
 class App extends Component {
   componentDidMount() {
