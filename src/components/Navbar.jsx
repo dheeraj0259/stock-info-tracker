@@ -1,28 +1,19 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { AppBar, Toolbar, IconButton, Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 import HomeIcon from "@material-ui/icons/Home";
 
-const useStyles = makeStyles({
-  root: {
-    background: "#000"
-  }
-});
-
 export default function Navbar() {
-  const classes = useStyles();
   return (
-    <div style={{ marginBottom: "80px" }}>
-      <AppBar
-        classes={{
-          root: classes.root
-        }}
-      >
+    <div style={{ marginBottom: "70px" }}>
+      <AppBar style={{ background: "black" }}>
         <Toolbar>
-          <IconButton edge="start" color="inherit" aria-label="menu">
-            <HomeIcon />
-          </IconButton>
-          <Typography variant="h6">Home</Typography>
+          <Link to="/home" style={{ color: "white", textDecoration: "none" }}>
+            <IconButton edge="start" color="inherit" aria-label="menu">
+              <HomeIcon style={{ marginRight: "10px" }} />
+              <Typography variant="h6">Stock Info Tracker</Typography>
+            </IconButton>
+          </Link>
         </Toolbar>
       </AppBar>
     </div>
