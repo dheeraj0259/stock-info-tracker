@@ -9,6 +9,7 @@ import App from "./App";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Notfound from "./components/notfound";
+import Navbar from "./components/Navbar";
 
 const store = createStore(reducers);
 
@@ -16,6 +17,7 @@ const routes = (
   <Provider store={store}>
     <Router>
       <div>
+        <Navbar />
         <Switch>
           <Route exact path="/" component={App} />
           <Route path="/home" component={Home} />
