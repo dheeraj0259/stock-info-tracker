@@ -8,7 +8,10 @@ export default function Navbar() {
     <div style={{ marginBottom: "70px" }}>
       <AppBar style={{ background: "black" }}>
         <Toolbar>
-          <Link to="/home" style={{ color: "white", textDecoration: "none" }}>
+          <Link
+            to="/stock-info-tracker/home"
+            style={{ color: "white", textDecoration: "none" }}
+          >
             <IconButton edge="start" color="inherit" aria-label="menu">
               <HomeIcon style={{ marginRight: "10px" }} />
               <Typography variant="h6">Stock Info Tracker</Typography>

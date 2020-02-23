@@ -12,6 +12,7 @@ import Notfound from "./components/notfound";
 import Navbar from "./components/Navbar";
 
 const store = createStore(reducers);
+const baseUrl = "stock-info-tracker";
 
 const routes = (
   <Provider store={store}>
@@ -19,9 +20,9 @@ const routes = (
       <div>
         <Navbar />
         <Switch>
-          <Route exact path="/" component={App} />
-          <Route path="/home" component={Home} />
-          <Route path="/login" component={Login} />
+          <Route exact path={`/${baseUrl}`} component={App} />
+          <Route path={`/${baseUrl}/home`} component={Home} />
+          <Route path={`/${baseUrl}/login`} component={Login} />
           <Route component={Notfound} />
         </Switch>
       </div>
