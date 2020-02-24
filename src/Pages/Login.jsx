@@ -10,18 +10,17 @@ class Login extends React.Component {
         container
         direction="row"
         justify="center"
-        style={{ marginTop: 150 }}
+        style={{ position: "fixed", top: "22%" }}
       >
         <Fab
           size="medium"
-          aria-label="add"
           style={{
             position: "absolute",
             marginTop: 8,
             marginLeft: -10
           }}
         >
-          <LockIcon />
+          <LockIcon style={{ fontSize: 28 }} />
         </Fab>
         <LoginCard />
       </Grid>

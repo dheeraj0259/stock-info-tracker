@@ -50,12 +50,18 @@ export default function LoginCard() {
   };
 
   return (
-    <Card style={{ maxWidth: 1000 }}>
+    <Card
+      style={{
+        maxWidth: "calc(100vw - 40%)",
+        backgroundColor: "#80808026",
+        maxHeight: 480
+      }}
+    >
       <Grid container direction="row" justify="center" spacing={3}>
         <Grid item xs={6}>
           <CardMedia
             component="img"
-            style={{ height: 450 }}
+            style={{ height: "480px" }}
             image={loginBackground}
             title="Login"
           />
@@ -112,7 +118,7 @@ export default function LoginCard() {
             />
             <Button
               size="large"
-              style={{ marginTop: 40 }}
+              style={{ marginTop: 30 }}
               variant="contained"
               color="primary"
               onClick={handleClickSignIn}
@@ -120,7 +126,7 @@ export default function LoginCard() {
             >
               Sign in
             </Button>
-            <Divider style={{ marginTop: 20, marginBottom: 20 }} />
+            <Divider style={{ marginTop: 20, marginBottom: 10 }} />
             <Link href="/stock-info-tracker">Dont have an account?</Link>
           </Grid>
         </Grid>
