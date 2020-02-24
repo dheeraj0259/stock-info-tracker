@@ -5,12 +5,10 @@ import {
   Typography,
   Grid,
   TextField,
+  Button,
   InputAdornment,
-  IconButton,
-  OutlinedInput,
-  FormControl,
-  InputLabel,
-  Button
+  Divider,
+  Link
 } from "@material-ui/core";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
@@ -21,11 +19,26 @@ export default function LoginCard() {
   const [values, setValues] = React.useState({
     userEmail: "",
     password: "",
-    showPassword: false
+    showPassword: false,
+    isEmailValid: true,
+    isPasswordValid: true
   });
 
   const handleChange = key => event => {
-    setValues({ ...values, [key]: event.target.value });
+    const keyToAssign = key === "password" ? "isPasswordValid" : "isEmailValid";
+    if (!event.target.value) {
+      setValues({
+        ...values,
+        [keyToAssign]: !values[keyToAssign],
+        [key]: event.target.value
+      });
+    } else {
+      setValues({
+        ...values,
+        [key]: event.target.value,
+        [keyToAssign]: true
+      });
+    }
   };
 
   const handleClickShowPassword = () => {
@@ -42,7 +55,7 @@ export default function LoginCard() {
         <Grid item xs={6}>
           <CardMedia
             component="img"
-            style={{ height: 480 }}
+            style={{ height: 450 }}
             image={loginBackground}
             title="Login"
           />
@@ -64,43 +77,51 @@ export default function LoginCard() {
             style={{ marginTop: 20, padding: 20 }}
           >
             <TextField
-              id="outlined-required"
+              id="outlined-email-required"
               label="Email address"
               onChange={handleChange("userEmail")}
               variant="outlined"
+              color={!values.isEmailValid ? "secondary" : "primary"}
+              error={!values.isEmailValid}
+              helperText={
+                !values.isEmailValid ? "This is a required field" : ""
+              }
             />
-            <FormControl style={{ marginTop: 10 }} variant="outlined">
-              <InputLabel htmlFor="outlined-adornment-password">
-                Password
-              </InputLabel>
-              <OutlinedInput
-                id="outlined-adornment-password"
-                label="Password"
-                type={values.showPassword ? "text" : "password"}
-                value={values.password}
-                onChange={handleChange("password")}
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      edge="end"
-                    >
-                      {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                    </IconButton>
+            <TextField
+              style={{ marginTop: 10 }}
+              id="outlined-password-required"
+              label="Password"
+              type={!values.showPassword ? "password" : "text"}
+              onChange={handleChange("password")}
+              variant="outlined"
+              color={!values.isPasswordValid ? "secondary" : "primary"}
+              error={!values.isPasswordValid}
+              helperText={
+                !values.isPasswordValid ? "This is a required field" : ""
+              }
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment
+                    position="start"
+                    onClick={handleClickShowPassword}
+                  >
+                    {!values.showPassword ? <VisibilityOff /> : <Visibility />}
                   </InputAdornment>
-                }
-              />
-            </FormControl>
+                )
+              }}
+            />
             <Button
               size="large"
               style={{ marginTop: 40 }}
               variant="contained"
               color="primary"
               onClick={handleClickSignIn}
+              disabled={!(values.userEmail && values.password)}
             >
               Sign in
             </Button>
+            <Divider style={{ marginTop: 20, marginBottom: 20 }} />
+            <Link href="/stock-info-tracker">Dont have an account?</Link>
           </Grid>
         </Grid>
       </Grid>
