@@ -15,6 +15,7 @@ class Login extends React.Component {
     };
 
     const styleInfo = () => {
+      // TODO: remove below unused variable
       const signInStyle = {
         card: {
           maxWidth: "calc(100vw - 40%)",
@@ -33,7 +34,7 @@ class Login extends React.Component {
           height: "520px"
         }
       };
-      return isSignInRoute() ? signInStyle : signOutStyle;
+      return isSignInRoute() ? signOutStyle : signOutStyle;
     };
 
     return (
