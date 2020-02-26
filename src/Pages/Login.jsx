@@ -1,17 +1,57 @@
 import React from "react";
-import { Card, CardMedia, Grid, Fab } from "@material-ui/core";
+import { Card, CardMedia, Grid, Fab, Zoom } from "@material-ui/core";
 import LockIcon from "@material-ui/icons/Lock";
 import PersonIcon from "@material-ui/icons/Person";
 import SignIn from "../components/SignIn";
 import SignUp from "../components/SignUp";
 
-import loginBackground from "../images/loginBackground.jpg";
+import loginBackground0 from "../images/loginBackground.jpg";
+import loginBackground1 from "../images/loginBackground1.jpg";
+import loginBackground2 from "../images/loginBackground2.jpg";
+import loginBackground3 from "../images/loginBackground3.jpg";
+import loginBackground4 from "../images/loginBackground4.jpg";
+import loginBackground5 from "../images/loginBackground5.jpg";
 
 class Login extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      imageCounter: 0
+    };
+  }
+
   render() {
+    const { imageCounter } = this.state;
+
     const isSignInRoute = () => {
       const { match } = this.props;
       return match.url.includes("signin");
+    };
+
+    const getImage = () => {
+      switch (imageCounter) {
+        case 0:
+          return loginBackground5;
+        case 1:
+          return loginBackground1;
+        case 2:
+          return loginBackground2;
+        case 3:
+          return loginBackground3;
+        case 4:
+          return loginBackground4;
+        case 5:
+          return loginBackground0;
+        default:
+          return loginBackground5;
+      }
+    };
+
+    const onClickIconHandler = () => {
+      const count = imageCounter + 1;
+      this.setState({
+        imageCounter: count > 5 ? 0 : count
+      });
     };
 
     const styleInfo = () => {
@@ -51,17 +91,25 @@ class Login extends React.Component {
             marginTop: 8,
             marginLeft: -10
           }}
+          onClick={onClickIconHandler}
         >
-          {isSignInRoute() ? (
-            <LockIcon style={{ fontSize: 28 }} />
-          ) : (
-            <PersonIcon style={{ fontSize: 28 }} />
-          )}
+          <Zoom
+            in
+            style={{
+              transitionDelay: "100ms"
+            }}
+          >
+            {isSignInRoute() ? (
+              <LockIcon style={{ fontSize: 28 }} />
+            ) : (
+              <PersonIcon style={{ fontSize: 28 }} />
+            )}
+          </Zoom>
         </Fab>
+
         <Card
           style={{
             maxWidth: `${styleInfo().card.maxWidth}`,
-            backgroundColor: "#80808026",
             maxHeight: `${styleInfo().card.maxHeight}`
           }}
         >
@@ -70,10 +118,9 @@ class Login extends React.Component {
               <CardMedia
                 component="img"
                 style={{ height: `${styleInfo().image.height}` }}
-                image={loginBackground}
+                image={getImage()}
               />
             </Grid>
-
             {isSignInRoute() ? <SignIn /> : <SignUp />}
           </Grid>
         </Card>
