@@ -96,7 +96,7 @@ class Login extends React.Component {
           <Zoom
             in
             style={{
-              transitionDelay: "100ms"
+              transitionDelay: "200ms"
             }}
           >
             {isSignInRoute() ? (
