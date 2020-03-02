@@ -12,7 +12,6 @@ class App extends Component {
 
   render() {
     const { users } = this.props;
-    console.log("ss", users);
     return <h1>{users.length} Welcome to Home page</h1>;
   }
 }
