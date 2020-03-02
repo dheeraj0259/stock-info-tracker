@@ -11,6 +11,8 @@ import {
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
+import { postUserData } from "../sagas/data";
+
 export default function SignUp() {
   const [values, setValues] = React.useState({
     userEmail: "",
@@ -61,7 +63,15 @@ export default function SignUp() {
   };
 
   const handleClickSignIn = () => {
-    console.log(">>>>>>", values);
+    console.log("Inside onClick SignUp", values);
+    const { firstName, lastName, userEmail, password } = values;
+    const userDetails = {
+      firstName,
+      lastName,
+      email: userEmail,
+      password
+    };
+    postUserData(userDetails);
   };
 
   return (

@@ -1,31 +1,32 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getDataRequest } from "./actions/data";
+import { getUsersRequest } from "./actions/data";
 
 import "./App.scss";
 
 class App extends Component {
   componentDidMount() {
-    const { getData } = this.props;
-    getData();
+    const { getUserDataRequest } = this.props;
+    getUserDataRequest();
   }
 
   render() {
-    const { data } = this.props;
-    return <h1>{data} Welcome to Home page</h1>;
+    const { users } = this.props;
+    console.log("ss", users);
+    return <h1>{users.length} Welcome to Home page</h1>;
   }
 }
 
 // redux providing state takeover
 const mapStateToProps = state => {
   return {
-    data: state.data.test
+    users: state.data.users
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    getData: () => dispatch(getDataRequest())
+    getUserDataRequest: () => dispatch(getUsersRequest())
   };
 };
 

@@ -1,23 +1,34 @@
 import { takeEvery, call, fork, put } from "redux-saga/effects";
 import * as actions from "../actions/data";
-import * as api from "../api/data";
+import * as api from "../api";
 
-// create a generator function
-function* fetchData() {
-  // try to make the api call
+function* fetchUserData() {
   try {
-    // yield the api responsse into data
-    const data = yield call(api.getData);
-    yield put(actions.getDataSuccess({ data: data.data }));
+    const { data } = yield call(api.user.getUserList);
+    yield put(actions.getUsers({ data: data.data.Items }));
   } catch (e) {
     console.log(e);
   }
 }
-function* watchFetchData() {
-  // create watcher of fetchData function
-  yield takeEvery(actions.Types.GET_DATA_REQUEST, fetchData);
+
+function* watchFetchUserData() {
+  yield takeEvery(actions.Types.GET_USERS_REQUEST, fetchUserData);
 }
 
-const DataSagas = [fork(watchFetchData)];
+export function* postUserData(userDetails) {
+  console.log("Inside the post saga");
+  try {
+    // post user information
+    console.log("Inside the post saga");
+    const response = yield call(api.user.setUserInformation(userDetails));
+    console.log("post response", response);
+    // get user information
+    yield put(actions.getUsersRequest);
+  } catch (e) {
+    console.log(e);
+  }
+}
 
-export default DataSagas;
+const UserDataSagas = [fork(watchFetchUserData)];
+
+export default UserDataSagas;

@@ -1,16 +1,22 @@
 // actions types is object with the
 // key: GET_DATA_REQUEST -> value: describes the action
 export const Types = {
-  GET_DATA_REQUEST: "get_data_request",
-  GET_DATA_SUCCESS: "get_data_success"
+  GET_USERS_REQUEST: "get_users_request",
+  GET_USERS_SUCCESS: "get_users_success",
+  SET_USER_REQUEST: "set_user_request"
 };
 
-// function that returns an object literal
-export const getDataRequest = () => ({
-  type: Types.GET_DATA_REQUEST
+export const getUsersRequest = () => ({
+  type: Types.GET_USERS_REQUEST
 });
-// key: payload will contain result of the api call
-export const getDataSuccess = ({ data }) => ({
-  type: Types.GET_DATA_SUCCESS,
-  payload: { data }
+
+export const getUsers = ({ data }) => ({
+  type: Types.GET_USERS_SUCCESS,
+  payload: data
+});
+
+// TODO: Remove the below action
+export const setUserRequest = payload => ({
+  type: Types.SET_USER_REQUEST,
+  payload
 });
