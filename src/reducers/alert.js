@@ -4,10 +4,10 @@ import { Types } from "../actions/alert";
 const INIT_STATE = {
   showAlert: false,
   message: "",
-  type: ""
+  type: "success"
 };
 
-const setAlertStatus = ({ status = false, message = "", type = "" }) => {
+const setAlertStatus = ({ status = false, message = "", type = "success" }) => {
   return {
     ...INIT_STATE,
     showAlert: status,

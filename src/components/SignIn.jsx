@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import {
   Typography,
   Grid,
@@ -6,12 +7,15 @@ import {
   Button,
   InputAdornment,
   Divider,
-  Link
+  Link,
+  CircularProgress
 } from "@material-ui/core";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
-export default function SignIn() {
+import { user } from "../api";
+
+function SignIn(props) {
   const [values, setValues] = React.useState({
     userEmail: "",
     password: "",
@@ -19,6 +23,7 @@ export default function SignIn() {
     isEmailValid: true,
     isPasswordValid: true
   });
+  const { loading, userLoginRequest } = props;
 
   const handleChange = key => event => {
     const keyToAssign = key === "password" ? "isPasswordValid" : "isEmailValid";
@@ -42,7 +47,11 @@ export default function SignIn() {
   };
 
   const handleClickSignIn = () => {
-    console.log(">>>>>>", values);
+    const { userEmail, password } = values;
+    userLoginRequest({
+      email: userEmail,
+      password
+    });
   };
 
   return (
@@ -93,9 +102,9 @@ export default function SignIn() {
           variant="contained"
           color="primary"
           onClick={handleClickSignIn}
-          disabled={!(values.userEmail && values.password)}
+          disabled={!(values.userEmail && values.password) || loading}
         >
-          Sign in
+          {loading ? <CircularProgress size={24} /> : "Sign in"}
         </Button>
         <Divider style={{ marginTop: 20, marginBottom: 10 }} />
         <Link href="/stock-info-tracker/signup">Dont have an account?</Link>
@@ -103,3 +112,16 @@ export default function SignIn() {
     </Grid>
   );
 }
+
+const mapStateToProps = state => {
+  return {
+    loading: state.loading.loading
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    userLoginRequest: userDetails => user.logIn(userDetails, dispatch)
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

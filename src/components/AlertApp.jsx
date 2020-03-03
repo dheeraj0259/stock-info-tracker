@@ -20,7 +20,7 @@ class AlertApp extends React.Component {
         }}
       >
         <Alert
-          variant="filled"
+          variant="standard"
           severity={type}
           onClose={() => resetAlertStatus({})}
         >
