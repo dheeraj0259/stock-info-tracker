@@ -18,7 +18,6 @@ export const setUserInformation = (userDetails, dispatch) => {
         userDetails
       )
       .then(res => {
-        console.log(">>>>>>", res);
         dispatch(
           setAlertStatus({
             status: true,
@@ -26,6 +25,7 @@ export const setUserInformation = (userDetails, dispatch) => {
             type: getAlertType(res.status)
           })
         );
+        setTimeout(() => dispatch(setAlertStatus({})), 4000);
       })
       .then(() => dispatch(getUsersRequest()));
   } catch (e) {
