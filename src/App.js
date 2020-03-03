@@ -19,7 +19,7 @@ class App extends Component {
 // redux providing state takeover
 const mapStateToProps = state => {
   return {
-    users: state.data.users
+    users: state.user.users
   };
 };
 
