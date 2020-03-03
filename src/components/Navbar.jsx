@@ -1,24 +1,37 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { AppBar, Toolbar, IconButton, Typography } from "@material-ui/core";
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  Grid
+} from "@material-ui/core";
 import HomeIcon from "@material-ui/icons/Home";
+
+import AlertApp from "./AlertApp";
 
 export default function Navbar() {
   return (
-    <div style={{ marginBottom: "70px" }}>
-      <AppBar style={{ background: "black" }}>
-        <Toolbar>
-          <Link
-            to="/stock-info-tracker/"
-            style={{ color: "white", textDecoration: "none" }}
-          >
-            <IconButton edge="start" color="inherit" aria-label="menu">
-              <HomeIcon style={{ marginRight: "10px" }} />
-              <Typography variant="h6">Stock Info Tracker</Typography>
-            </IconButton>
-          </Link>
-        </Toolbar>
-      </AppBar>
-    </div>
+    <Grid container direction="column">
+      <Grid item style={{ marginBottom: "58px" }}>
+        <AppBar style={{ background: "black" }}>
+          <Toolbar>
+            <Link
+              to="/stock-info-tracker/"
+              style={{ color: "white", textDecoration: "none" }}
+            >
+              <IconButton edge="start" color="inherit" aria-label="menu">
+                <HomeIcon style={{ marginRight: "10px" }} />
+                <Typography variant="h6">Stock Info Tracker</Typography>
+              </IconButton>
+            </Link>
+          </Toolbar>
+        </AppBar>
+      </Grid>
+      <Grid item>
+        <AlertApp />
+      </Grid>
+    </Grid>
   );
 }
