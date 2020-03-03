@@ -7,12 +7,12 @@ const INIT_STATE = {
   type: "success"
 };
 
-const setAlertStatus = payload => {
+const setAlertStatus = ({ status = false, message = "", type = "success" }) => {
   return {
     ...INIT_STATE,
-    showAlert: !INIT_STATE.showAlert,
-    message: payload.message,
-    type: payload.type
+    showAlert: status,
+    message,
+    type
   };
 };
 

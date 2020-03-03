@@ -21,6 +21,7 @@ export const setUserInformation = (userDetails, dispatch) => {
         console.log(">>>>>>", res);
         dispatch(
           setAlertStatus({
+            status: true,
             message: res.data.message,
             type: getAlertType(res.status)
           })

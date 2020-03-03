@@ -13,8 +13,8 @@ import AlertApp from "./AlertApp";
 
 export default function Navbar() {
   return (
-    <Grid container direction="column">
-      <Grid item style={{ marginBottom: "58px" }}>
+    <Grid container direction="column" alignItems="flex-end">
+      <Grid item style={{ marginBottom: "65px" }}>
         <AppBar style={{ background: "black" }}>
           <Toolbar>
             <Link
@@ -29,7 +29,7 @@ export default function Navbar() {
           </Toolbar>
         </AppBar>
       </Grid>
-      <Grid item>
+      <Grid item style={{ zIndex: 1, width: "30%" }}>
         <AlertApp />
       </Grid>
     </Grid>

@@ -1,18 +1,25 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Alert, AlertTitle } from "@material-ui/lab";
+import { Slide } from "@material-ui/core";
 
 import { setAlertStatus } from "../actions/alert";
 
 class AlertApp extends React.Component {
   render() {
-    const { show, message, type } = this.props;
+    const { show, message, type, resetAlertStatus } = this.props;
     return (
       show && (
-        <Alert severity={type}>
-          <AlertTitle>{type.toUpperCase()}</AlertTitle>
-          {message}
-        </Alert>
+        <Slide direction="left" in>
+          <Alert
+            variant="filled"
+            severity={type}
+            onClose={() => resetAlertStatus({})}
+          >
+            <AlertTitle>{type.toUpperCase()}</AlertTitle>
+            {message}
+          </Alert>
+        </Slide>
       )
     );
   }
@@ -26,7 +33,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    setAlertStatus: info => dispatch(setAlertStatus(info))
+    resetAlertStatus: info => dispatch(setAlertStatus(info))
   };
 };
 
