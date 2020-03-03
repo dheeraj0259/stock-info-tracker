@@ -34,6 +34,7 @@ export const setUserInformation = (userDetails, dispatch) => {
   } catch (e) {
     dispatch(
       setAlertStatus({
+        status: true,
         message: "Sorry something went wrong. Please refresh and try again.",
         type: "error"
       })
