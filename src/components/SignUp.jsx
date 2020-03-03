@@ -79,7 +79,6 @@ class SignUp extends React.Component {
     };
 
     const handleClickSignIn = () => {
-      console.log("Inside onClick SignUp");
       const userDetails = {
         firstName,
         lastName,

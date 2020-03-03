@@ -1,5 +1,4 @@
 import { Types } from "../actions/data";
-import { user } from "../api";
 
 // create initial state for reducers
 const INIT_STATE = {
