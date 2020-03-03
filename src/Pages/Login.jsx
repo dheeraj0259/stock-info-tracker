@@ -121,7 +121,7 @@ class Login extends React.Component {
                 image={getImage()}
               />
             </Grid>
-            {isSignInRoute() ? <SignIn /> : <SignUp />}
+            {isSignInRoute() ? <SignIn /> : <SignUp {...this.props} />}
           </Grid>
         </Card>
       </Grid>

@@ -78,7 +78,8 @@ class SignUp extends React.Component {
       this.setState({ showPassword: !showPassword });
     };
 
-    const handleClickSignIn = () => {
+    const handleClickSignUp = () => {
+      const { history } = this.props;
       const userDetails = {
         firstName,
         lastName,
@@ -87,6 +88,7 @@ class SignUp extends React.Component {
       };
       const { setUserDataRequest } = this.props;
       setUserDataRequest(userDetails);
+      setTimeout(() => history.push("signin"), 2000);
     };
     return (
       <Grid item xs={6}>
@@ -156,7 +158,7 @@ class SignUp extends React.Component {
             style={{ marginTop: 30 }}
             variant="contained"
             color="primary"
-            onClick={handleClickSignIn}
+            onClick={handleClickSignUp}
             disabled={!(userEmail && password && firstName && lastName)}
           >
             Sign up
