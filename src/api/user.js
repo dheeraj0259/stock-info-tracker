@@ -45,20 +45,26 @@ export const logIn = (userDetails, dispatch) => {
   try {
     const { email, password } = userDetails;
     dispatch(setLoadingStatus(true));
-    console.log("inside here");
     axios
       .get(
         `https://g6crplts3e.execute-api.us-east-2.amazonaws.com/local/userInfo/${email}`
       )
       .then(res => {
-        console.log(res.data);
         dispatch(setLoadingStatus(false));
-        if (!(res.data.data === {})) {
+        if (!res.data.data.Item) {
           dispatch(
             setAlertStatus({
               status: true,
               message: res.data.message,
               type: "error"
+            })
+          );
+        } else if (res.data.data.Item.password !== password) {
+          dispatch(
+            setAlertStatus({
+              status: true,
+              message: `Incorrect password for the account ${email}`,
+              type: "warning"
             })
           );
         } else {
