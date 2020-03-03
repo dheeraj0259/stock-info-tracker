@@ -7,7 +7,7 @@ function* fetchUserData() {
     const { data } = yield call(api.user.getUserList);
     yield put(actions.getUsers({ data: data.data.Items }));
   } catch (e) {
-    console.log(e);
+    throw new Error(e);
   }
 }
 

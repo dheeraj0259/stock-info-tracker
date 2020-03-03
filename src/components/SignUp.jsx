@@ -12,7 +12,7 @@ import {
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
-import { setUserRequest } from "../actions/data";
+import { user } from "../api";
 
 class SignUp extends React.Component {
   constructor() {
@@ -31,6 +31,7 @@ class SignUp extends React.Component {
   }
 
   render() {
+    console.log(this.props.users);
     const {
       isFirstNameValid,
       isLastNameValid,
@@ -85,7 +86,8 @@ class SignUp extends React.Component {
         email: userEmail,
         password
       };
-      this.props.setUserDataRequest(userDetails);
+      const { setUserDataRequest } = this.props;
+      setUserDataRequest(userDetails);
     };
     return (
       <Grid item xs={6}>
@@ -167,11 +169,16 @@ class SignUp extends React.Component {
     );
   }
 }
-
+const mapStateToProps = state => {
+  return {
+    users: state.data.users
+  };
+};
 const mapDispatchToProps = dispatch => {
   return {
-    setUserDataRequest: userDetails => dispatch(setUserRequest(userDetails))
+    setUserDataRequest: userDetails =>
+      user.setUserInformation(userDetails, dispatch)
   };
 };
 
-export default connect(null, mapDispatchToProps)(SignUp);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
