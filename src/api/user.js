@@ -2,6 +2,7 @@ import axios from "axios";
 
 import { getUsersRequest } from "../actions/user";
 import { setAlertStatus } from "../actions/alert";
+import { setLoadingStatus } from "../actions/loading";
 import { getAlertType } from "../util/common";
 
 export const getUserList = () => {
@@ -12,12 +13,14 @@ export const getUserList = () => {
 
 export const setUserInformation = (userDetails, dispatch) => {
   try {
+    dispatch(setLoadingStatus());
     axios
       .post(
         "https://g6crplts3e.execute-api.us-east-2.amazonaws.com/local/userInfo",
         userDetails
       )
       .then(res => {
+        dispatch(setLoadingStatus());
         dispatch(
           setAlertStatus({
             status: true,

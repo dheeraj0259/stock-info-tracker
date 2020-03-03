@@ -7,7 +7,8 @@ import {
   Button,
   InputAdornment,
   Divider,
-  Link
+  Link,
+  CircularProgress
 } from "@material-ui/core";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
@@ -43,6 +44,8 @@ class SignUp extends React.Component {
       firstName,
       lastName
     } = this.state;
+
+    const { loading } = this.props;
 
     const getKey = key => {
       switch (key) {
@@ -87,7 +90,9 @@ class SignUp extends React.Component {
         password
       };
       const { setUserDataRequest } = this.props;
+      this.setState({ loading: true });
       setUserDataRequest(userDetails);
+      this.setState({ loading: false });
       setTimeout(() => history.push("signin"), 2000);
     };
     return (
@@ -159,9 +164,11 @@ class SignUp extends React.Component {
             variant="contained"
             color="primary"
             onClick={handleClickSignUp}
-            disabled={!(userEmail && password && firstName && lastName)}
+            disabled={
+              !(userEmail && password && firstName && lastName) || loading
+            }
           >
-            Sign up
+            {loading ? <CircularProgress size={24} /> : "Sign up"}
           </Button>
           <Divider style={{ marginTop: 20, marginBottom: 10 }} />
           <Link href="/stock-info-tracker/signin">Have an account?</Link>
@@ -170,9 +177,11 @@ class SignUp extends React.Component {
     );
   }
 }
+
 const mapStateToProps = state => {
   return {
-    users: state.user.users
+    users: state.user.users,
+    loading: state.loading.loading
   };
 };
 const mapDispatchToProps = dispatch => {
