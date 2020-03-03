@@ -2,6 +2,7 @@ import axios from "axios";
 
 import { getUsersRequest } from "../actions/user";
 import { setAlertStatus } from "../actions/alert";
+import { getAlertType } from "../util/common";
 
 export const getUserList = () => {
   return axios.get(
@@ -17,10 +18,11 @@ export const setUserInformation = (userDetails, dispatch) => {
         userDetails
       )
       .then(res => {
+        console.log(res);
         dispatch(
           setAlertStatus({
             message: res.data.message,
-            type: "success"
+            type: getAlertType(res.staus)
           })
         );
       })
