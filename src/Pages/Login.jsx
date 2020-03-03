@@ -55,16 +55,6 @@ class Login extends React.Component {
     };
 
     const styleInfo = () => {
-      // TODO: remove below unused variable
-      const signInStyle = {
-        card: {
-          maxWidth: "calc(100vw - 40%)",
-          maxHeight: "480px"
-        },
-        image: {
-          height: "480px"
-        }
-      };
       const signOutStyle = {
         card: {
           maxWidth: "calc(100vw - 30%)",
