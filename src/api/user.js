@@ -18,11 +18,11 @@ export const setUserInformation = (userDetails, dispatch) => {
         userDetails
       )
       .then(res => {
-        console.log(res);
+        console.log(">>>>>>", res);
         dispatch(
           setAlertStatus({
             message: res.data.message,
-            type: getAlertType(res.staus)
+            type: getAlertType(res.status)
           })
         );
       })
