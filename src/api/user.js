@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { getUsersRequest } from "../actions/data";
+import { getUsersRequest } from "../actions/user";
 
 export const getUserList = () => {
   return axios.get(

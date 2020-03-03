@@ -1,4 +1,4 @@
-import { Types } from "../actions/data";
+import { Types } from "../actions/user";
 
 // create initial state for reducers
 const INIT_STATE = {

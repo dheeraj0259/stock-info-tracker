@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getUsersRequest } from "./actions/data";
+import { getUsersRequest } from "./actions/user";
 
 import "./App.scss";
 

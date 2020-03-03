@@ -1,5 +1,5 @@
 import { takeEvery, call, fork, put } from "redux-saga/effects";
-import * as actions from "../actions/data";
+import * as actions from "../actions/user";
 import * as api from "../api";
 
 function* fetchUserData() {
