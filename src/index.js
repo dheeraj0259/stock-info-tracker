@@ -12,8 +12,8 @@ import Login from "./pages/Login";
 import rootSaga from "./sagas";
 
 const sagaMiddleware = createSagaMiddleware();
-sagaMiddleware.run(rootSaga);
 const store = createStore(reducers, applyMiddleware(sagaMiddleware));
+sagaMiddleware.run(rootSaga);
 const baseUrl = "stock-info-tracker";
 
 const routes = (
