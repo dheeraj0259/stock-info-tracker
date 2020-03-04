@@ -56,7 +56,7 @@ export const logIn = (userDetails, dispatch) => {
             setAlertStatus({
               status: true,
               message: res.data.message,
-              type: "error"
+              type: "warning"
             })
           );
         } else if (res.data.data.Item.password !== password) {

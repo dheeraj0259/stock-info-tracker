@@ -21,15 +21,10 @@ sagaMiddleware.run(rootSaga);
 const routes = (
   <Provider store={store}>
     <Router>
-      <div>
-        <Navbar />
-        <Switch>
-          <Route exact path={`/${baseUrl}`} component={App} />
-          <Route path={`/${baseUrl}/signin`} component={Login} />
-          <Route path={`/${baseUrl}/signup`} component={Login} />
-          <Route component={Notfound} />
-        </Switch>
-      </div>
+      <Navbar />
+      <Route path={`/${baseUrl}`} component={App} />
+      <Route path={`/${baseUrl}/signin`} component={Login} />
+      <Route path={`/${baseUrl}/signup`} component={Login} />
     </Router>
   </Provider>
 );

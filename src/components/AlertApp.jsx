@@ -9,25 +9,27 @@ class AlertApp extends React.Component {
   render() {
     const { show, message, type, resetAlertStatus } = this.props;
     return (
-      <Slide
-        direction="left"
-        in={show}
-        mountOnEnter
-        unmountOnExit
-        style={{
-          boxShadow:
-            "0 6px 10px 0 #0000008c, 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0)"
-        }}
-      >
-        <Alert
-          variant="standard"
-          severity={type}
-          onClose={() => resetAlertStatus({})}
+      show && (
+        <Slide
+          direction="left"
+          in={show}
+          mountOnEnter
+          unmountOnExit
+          style={{
+            boxShadow:
+              "0 6px 10px 0 #0000008c, 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0)"
+          }}
         >
-          <AlertTitle>{type.toUpperCase()}</AlertTitle>
-          {message}
-        </Alert>
-      </Slide>
+          <Alert
+            variant="standard"
+            severity={type}
+            onClose={() => resetAlertStatus({})}
+          >
+            <AlertTitle>{type.toUpperCase()}</AlertTitle>
+            {message}
+          </Alert>
+        </Slide>
+      )
     );
   }
 }

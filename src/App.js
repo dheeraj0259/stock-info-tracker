@@ -1,32 +1,10 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { getUsersRequest } from "./actions/user";
+import Navbar from "./components/Navbar";
 
 import "./App.scss";
 
-class App extends Component {
-  componentDidMount() {
-    const { getUserDataRequest } = this.props;
-    getUserDataRequest();
-  }
-
+export default class App extends Component {
   render() {
-    const { users } = this.props;
-    return <h1>{users.length} Welcome to Home page</h1>;
+    return <Navbar />;
   }
 }
-
-// redux providing state takeover
-const mapStateToProps = state => {
-  return {
-    users: state.user.users
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    getUserDataRequest: () => dispatch(getUsersRequest())
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
