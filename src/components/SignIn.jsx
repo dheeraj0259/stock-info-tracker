@@ -23,7 +23,7 @@ function SignIn(props) {
     isEmailValid: true,
     isPasswordValid: true
   });
-  const { loading, userLoginRequest } = props;
+  const { loading, userLoginRequest, userAccess } = props;
 
   const handleChange = key => event => {
     const keyToAssign = key === "password" ? "isPasswordValid" : "isEmailValid";
@@ -115,7 +115,8 @@ function SignIn(props) {
 
 const mapStateToProps = state => {
   return {
-    loading: state.loading.loading
+    loading: state.loading.loading,
+    userAccess: state.user.userAccess
   };
 };
 const mapDispatchToProps = dispatch => {

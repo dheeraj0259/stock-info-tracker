@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { getUsersRequest } from "../actions/user";
+import { getUsersRequest, setUserAccess } from "../actions/user";
 import { setAlertStatus } from "../actions/alert";
 import { setLoadingStatus } from "../actions/loading";
 import { baseApiUrl } from "../constants";
@@ -61,8 +61,10 @@ export const logIn = (userDetails, dispatch) => {
           type
         })
       );
-      if (type === "success")
+      if (type === "success") {
+        dispatch(setUserAccess(true));
         setTimeout(() => dispatch(setAlertStatus({})), 5000);
+      }
     });
   } catch (e) {
     dispatch(
