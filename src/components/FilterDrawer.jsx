@@ -14,7 +14,7 @@ class FilterDrawer extends Component {
   render() {
     const { showFilter, closeDrawer } = this.props;
     const sideList = () => (
-      <div role="presentation" style={{ width: 250 }}>
+      <div role="presentation" style={{ width: 250, marginTop: 50 }}>
         <List>
           {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
             <ListItem button key={text}>
@@ -41,7 +41,11 @@ class FilterDrawer extends Component {
 
     return (
       <div>
-        <Drawer open={showFilter} onClose={closeDrawer}>
+        <Drawer
+          open={showFilter}
+          onClose={closeDrawer}
+          style={{ zIndex: "none" }}
+        >
           {sideList()}
         </Drawer>
       </div>

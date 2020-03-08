@@ -31,13 +31,11 @@ class Home extends Component {
   render() {
     const { showFilter } = this.state;
     return (
-      <Grid container style={{ marginTop: 50 }}>
-        <Grid item>
-          <FilterDrawer
-            showFilter={showFilter}
-            closeDrawer={() => this.setState({ showFilter: false })}
-          />
-        </Grid>
+      <Grid container direction="row" style={{ marginTop: 50 }}>
+        <FilterDrawer
+          showFilter={showFilter}
+          closeDrawer={() => this.setState({ showFilter: false })}
+        />
         <Grid item md={12} style={{ padding: "0 20px 0 20px" }}>
           <Grow in style={{ transformOrigin: "0 0 0" }} timeout={500}>
             <ExpansionPanel
