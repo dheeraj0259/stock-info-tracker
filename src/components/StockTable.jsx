@@ -1,12 +1,15 @@
 import React from "react";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
+import {
+  Table,
+  Checkbox,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper
+} from "@material-ui/core";
 
 const StyledTableCell = withStyles(theme => ({
   head: {
@@ -52,9 +55,19 @@ export default function CustomizedTables() {
       component={Paper}
       style={{ backgroundColor: "transparent", boxShadow: "none" }}
     >
-      <Table className={classes.table} aria-label="customized table">
+      <Table
+        className={classes.table}
+        aria-label="customized table"
+        size="small"
+      >
         <TableHead>
           <TableRow>
+            <StyledTableCell>
+              <Checkbox
+                indeterminate
+                inputProps={{ "aria-label": "select all desserts" }}
+              />
+            </StyledTableCell>
             <StyledTableCell>Dessert (100g serving)</StyledTableCell>
             <StyledTableCell>Calories</StyledTableCell>
             <StyledTableCell>Fat&nbsp;(g)</StyledTableCell>
@@ -69,6 +82,9 @@ export default function CustomizedTables() {
         <TableBody>
           {rows.map(row => (
             <StyledTableRow key={row.name}>
+              <StyledTableCell>
+                <Checkbox />
+              </StyledTableCell>
               <StyledTableCell component="th" scope="row">
                 {row.name}
               </StyledTableCell>
