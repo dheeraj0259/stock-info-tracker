@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Grid } from "@material-ui/core";
 
 import Navbar from "./components/Navbar";
@@ -6,7 +7,7 @@ import AlertApp from "./components/AlertApp";
 
 import "./App.scss";
 
-export default class App extends Component {
+class App extends Component {
   render() {
     return (
       <Grid container direction="column" alignItems="flex-end">
@@ -23,3 +24,11 @@ export default class App extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    userAccess: state.user.userAccess
+  };
+};
+
+export default connect(mapStateToProps, null)(App);

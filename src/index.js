@@ -9,6 +9,7 @@ import reducers from "./reducers";
 import App from "./App";
 import "./index.scss";
 import Login from "./pages/Login";
+import Home from "./pages/Home";
 import rootSaga from "./sagas";
 
 const sagaMiddleware = createSagaMiddleware();
@@ -22,6 +23,7 @@ const routes = (
       <Route path={`/${baseUrl}`} component={App} />
       <Route path={`/${baseUrl}/signin`} component={Login} />
       <Route path={`/${baseUrl}/signup`} component={Login} />
+      <Route path={`/${baseUrl}/dashboard`} component={Home} />
     </Router>
   </Provider>
 );

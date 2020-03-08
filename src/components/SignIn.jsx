@@ -23,7 +23,7 @@ function SignIn(props) {
     isEmailValid: true,
     isPasswordValid: true
   });
-  const { loading, userLoginRequest, userAccess } = props;
+  const { loading, userLoginRequest, history } = props;
 
   const handleChange = key => event => {
     const keyToAssign = key === "password" ? "isPasswordValid" : "isEmailValid";
@@ -52,6 +52,7 @@ function SignIn(props) {
       email: userEmail,
       password
     });
+    setTimeout(() => history.push("/stock-info-tracker/dashboard"), 1000);
   };
 
   return (

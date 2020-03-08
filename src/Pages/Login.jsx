@@ -22,9 +22,9 @@ class Login extends React.Component {
 
   render() {
     const { imageCounter } = this.state;
+    const { match, history } = this.props;
 
     const isSignInRoute = () => {
-      const { match } = this.props;
       return match.url.includes("signin");
     };
 
@@ -111,7 +111,11 @@ class Login extends React.Component {
                 image={getImage()}
               />
             </Grid>
-            {isSignInRoute() ? <SignIn /> : <SignUp {...this.props} />}
+            {isSignInRoute() ? (
+              <SignIn history={history} />
+            ) : (
+              <SignUp history={history} />
+            )}
           </Grid>
         </Card>
       </Grid>
