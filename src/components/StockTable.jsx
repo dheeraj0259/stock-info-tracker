@@ -11,6 +11,13 @@ import {
   Paper
 } from "@material-ui/core";
 
+import DateFnsUtils from "@date-io/date-fns";
+import {
+  MuiPickersUtilsProvider,
+  KeyboardTimePicker,
+  KeyboardDatePicker
+} from "@material-ui/pickers";
+
 const StyledTableCell = withStyles(theme => ({
   head: {
     backgroundColor: theme.palette.common.black,
@@ -34,11 +41,11 @@ function createData(name, calories, fat, carbs, protein) {
 }
 
 const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Gingerbread", 356, 16.0, 49, 3.9)
+  createData("Apple", 159, 6.0, 24, 4.0),
+  createData("Microsoft", 237, 9.0, 37, 4.3),
+  createData("Tesla", 262, 16.0, 24, 6.0),
+  createData("Roku", 305, 3.7, 67, 4.3),
+  createData("Amazon", 356, 16.0, 49, 3.9)
 ];
 
 const useStyles = makeStyles({
@@ -49,6 +56,13 @@ const useStyles = makeStyles({
 
 export default function CustomizedTables() {
   const classes = useStyles();
+  const [selectedDate, setSelectedDate] = React.useState(
+    new Date("2014-08-18T21:11:54")
+  );
+
+  const handleDateChange = date => {
+    setSelectedDate(date);
+  };
 
   return (
     <TableContainer
@@ -68,15 +82,15 @@ export default function CustomizedTables() {
                 inputProps={{ "aria-label": "select all desserts" }}
               />
             </StyledTableCell>
-            <StyledTableCell>Dessert (100g serving)</StyledTableCell>
-            <StyledTableCell>Calories</StyledTableCell>
-            <StyledTableCell>Fat&nbsp;(g)</StyledTableCell>
-            <StyledTableCell>Carbs&nbsp;(g)</StyledTableCell>
-            <StyledTableCell>Protein&nbsp;(g)</StyledTableCell>
-            <StyledTableCell>Calories</StyledTableCell>
-            <StyledTableCell>Fat&nbsp;(g)</StyledTableCell>
-            <StyledTableCell>Carbs&nbsp;(g)</StyledTableCell>
-            <StyledTableCell>Protein&nbsp;(g)</StyledTableCell>
+            <StyledTableCell>Company</StyledTableCell>
+            <StyledTableCell>Shares Owned</StyledTableCell>
+            <StyledTableCell>Buy Price</StyledTableCell>
+            <StyledTableCell>Sell Price</StyledTableCell>
+            <StyledTableCell>Buyed on</StyledTableCell>
+            <StyledTableCell>Sold on</StyledTableCell>
+            <StyledTableCell>Profit</StyledTableCell>
+            <StyledTableCell>Loss</StyledTableCell>
+            <StyledTableCell>Recommend</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -92,7 +106,7 @@ export default function CustomizedTables() {
               <StyledTableCell>{row.fat}</StyledTableCell>
               <StyledTableCell>{row.carbs}</StyledTableCell>
               <StyledTableCell>{row.protein}</StyledTableCell>
-              <StyledTableCell>{row.calories}</StyledTableCell>
+              <StyledTableCell>ty</StyledTableCell>
               <StyledTableCell>{row.fat}</StyledTableCell>
               <StyledTableCell>{row.carbs}</StyledTableCell>
               <StyledTableCell>{row.protein}</StyledTableCell>
