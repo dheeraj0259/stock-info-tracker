@@ -78,7 +78,11 @@ function PersonaTree(props) {
           defaultExpandIcon={<ChevronRightIcon />}
         >
           <TreeItem nodeId="0" label={`${personaType} Profiles`}>
-            <TreeItem nodeId="1" label="*Please select a marketDev Profile" />
+            <TreeItem
+              nodeId="1"
+              label="*Please select a Market Dev Profile"
+              style={{ color: "red" }}
+            />
           </TreeItem>
         </TreeView>
       )
