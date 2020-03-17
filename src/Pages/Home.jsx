@@ -31,7 +31,7 @@ class Home extends Component {
           <Grid container justify="flex-end" alignItems="center">
             <Grid item>
               <TextField
-                style={{ minWidth: 200, marginLeft: 10 }}
+                style={{ minWidth: 400, marginLeft: 10, marginTop: "-2px" }}
                 label="Search"
                 id="outlined-margin-dense"
                 margin="dense"
@@ -48,7 +48,7 @@ class Home extends Component {
                 size="small"
                 color="inherit"
                 endIcon={<FilterListIcon />}
-                style={{ marginLeft: 10 }}
+                style={{ marginLeft: 20, marginTop: "-8px" }}
                 onClick={() => this.setState({ showFilter: true })}
               >
                 Filter
