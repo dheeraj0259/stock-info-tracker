@@ -98,6 +98,7 @@ function PersonaTree(props) {
             {profiles.map((profile, index) => {
               return (
                 <TreeItem
+                  key={index}
                   nodeId={index + 1}
                   label={`${selectedProfile.toUpperCase()} - ${profile.toUpperCase()}`}
                 />
@@ -120,7 +121,11 @@ function PersonaTree(props) {
         <TreeItem nodeId="0" label={`${personaType} Profiles`}>
           {profiles.map((profile, index) => {
             return (
-              <TreeItem nodeId={index + 1} label={profile.toUpperCase()} />
+              <TreeItem
+                nodeId={index + 1}
+                label={profile.toUpperCase()}
+                key={index}
+              />
             );
           })}
         </TreeItem>

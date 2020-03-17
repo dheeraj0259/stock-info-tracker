@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Grid, Button, Icon } from "@material-ui/core";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { Grid, Button, TextField, InputAdornment } from "@material-ui/core";
+import SearchIcon from "@material-ui/icons/Search";
 import FilterListIcon from "@material-ui/icons/FilterList";
 
 import ProfileCard from "../components/ProfileCard";
@@ -28,25 +28,39 @@ class Home extends Component {
           closeDrawer={() => this.setState({ showFilter: false })}
         />
         <Grid item md={12} style={{ padding: "0 20px 0 20px" }}>
-          <Grid container justify="flex-end">
+          <Grid container justify="flex-end" alignItems="center">
+            <Grid item>
+              <TextField
+                style={{ minWidth: 200, marginLeft: 10 }}
+                label="Search"
+                id="outlined-margin-dense"
+                margin="dense"
+                variant="outlined"
+                InputProps={{
+                  endAdornment: <SearchIcon />
+                }}
+              />
+            </Grid>
+
             <Grid item>
               <Button
                 variant="contained"
                 size="small"
                 color="inherit"
                 endIcon={<FilterListIcon />}
-                style={{ marginLeft: 5 }}
+                style={{ marginLeft: 10 }}
                 onClick={() => this.setState({ showFilter: true })}
               >
                 Filter
               </Button>
             </Grid>
-            <Grid item xs={12} style={{ marginTop: 10 }}>
-              {profiles.map(item => {
-                return <ProfileCard key={item} style={{ marginTop: 100 }} />;
-              })}
-            </Grid>
           </Grid>
+        </Grid>
+
+        <Grid item xs={12} style={{ padding: "0 20px 0 20px", marginTop: 10 }}>
+          {profiles.map(item => {
+            return <ProfileCard key={item} style={{ marginTop: 100 }} />;
+          })}
         </Grid>
       </Grid>
     );
