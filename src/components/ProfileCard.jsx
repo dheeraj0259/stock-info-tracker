@@ -1,5 +1,12 @@
 import React from "react";
-import { Card, Typography, Grid, Divider } from "@material-ui/core";
+import {
+  Card,
+  Typography,
+  Grid,
+  Divider,
+  List,
+  ListItem
+} from "@material-ui/core";
 import { TreeView, TreeItem } from "@material-ui/lab";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
@@ -41,7 +48,14 @@ const profileData = {
 
 const breedingProfiles = ["Breeding 1"];
 const marketDevProfiles = ["Market dev 1", "market dev 2", "market dev 3"];
-const marketingProfiles = ["marketing 1", "marketing 2"];
+const marketingProfiles = [
+  "marketing 1",
+  "marketing 2",
+  "marketing 3",
+  "marketing 4",
+  "marketing 5",
+  "marketing 6"
+];
 
 function FormColumn(props) {
   const { obj } = props;
@@ -65,6 +79,12 @@ function PersonaTree(props) {
   const handleSelect = (event, nodeId) => {
     if (nodeId !== "0" && personaType === "Market Dev") {
       setSelectedProfile(marketDevProfiles[nodeId - 1]);
+    }
+  };
+
+  const handleProfileSelect = profileIndex => {
+    if (personaType === "Market Dev") {
+      setSelectedProfile(marketDevProfiles[profileIndex]);
     }
   };
   if (personaType === "Marketing" && !selectedProfile) {
@@ -99,15 +119,42 @@ function PersonaTree(props) {
           defaultExpandIcon={<ChevronRightIcon />}
         >
           <TreeItem nodeId="0" label={`${personaType} Profiles`}>
-            {profiles.map((profile, index) => {
-              return (
-                <TreeItem
-                  key={index}
-                  nodeId={index + 1}
-                  label={`${selectedProfile.toUpperCase()} - ${profile.toUpperCase()}`}
-                />
-              );
-            })}
+            <List dense style={{ marginTop: "-15px" }}>
+              {profiles.map((profile, index) => {
+                return (
+                  <ListItem className="Zoom" key={index}>
+                    <span>
+                      <span
+                        style={{
+                          fontSize: 11,
+                          color: "gray",
+                          fontStyle: "italic",
+                          position: "relative",
+                          top: 5
+                        }}
+                      >
+                        L: English, C: Australia
+                      </span>
+                      <br />
+                      <span>{`${selectedProfile.toUpperCase()}-${profile.toUpperCase()}`}</span>
+                      <br />
+                      <span
+                        style={{
+                          fontSize: 11,
+                          color: "gray",
+                          fontStyle: "italic",
+                          position: "relative",
+                          top: "-8px"
+                        }}
+                      >
+                        M: Something Latest, GrowEnv: Something new, S: Left to
+                        last
+                      </span>
+                    </span>
+                  </ListItem>
+                );
+              })}
+            </List>
           </TreeItem>
         </TreeView>
       )
@@ -123,15 +170,46 @@ function PersonaTree(props) {
         defaultExpandIcon={<ChevronRightIcon />}
       >
         <TreeItem nodeId="0" label={`${personaType} Profiles`}>
-          {profiles.map((profile, index) => {
-            return (
-              <TreeItem
-                nodeId={index + 1}
-                label={profile.toUpperCase()}
-                key={index}
-              />
-            );
-          })}
+          <List dense style={{ marginTop: "-5px" }}>
+            {profiles.map((profile, index) => {
+              return (
+                <ListItem
+                  className="Zoom"
+                  button
+                  key={index}
+                  onClick={() => handleProfileSelect(index)}
+                >
+                  <span>
+                    <span
+                      style={{
+                        fontSize: 11,
+                        color: "gray",
+                        fontStyle: "italic",
+                        position: "relative",
+                        top: 5
+                      }}
+                    >
+                      L: English, C: Australia
+                    </span>
+                    <br />
+                    <span>{profile.toUpperCase()}</span>
+                    <br />
+                    <span
+                      style={{
+                        fontSize: 11,
+                        color: "gray",
+                        fontStyle: "italic",
+                        position: "relative",
+                        top: "-8px"
+                      }}
+                    >
+                      M: All, GrowEnv: All, S: All
+                    </span>
+                  </span>
+                </ListItem>
+              );
+            })}
+          </List>
         </TreeItem>
       </TreeView>
     )
