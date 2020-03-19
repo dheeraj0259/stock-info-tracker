@@ -119,7 +119,7 @@ function PersonaTree(props) {
           defaultExpandIcon={<ChevronRightIcon />}
         >
           <TreeItem nodeId="0" label={`${personaType} Profiles`}>
-            <List dense style={{ marginTop: "-15px" }}>
+            <List dense style={{ marginTop: "-5px" }}>
               {profiles.map((profile, index) => {
                 return (
                   <ListItem className="Zoom" key={index}>
@@ -147,8 +147,7 @@ function PersonaTree(props) {
                           top: "-8px"
                         }}
                       >
-                        M: Something Latest, GrowEnv: Something new, S: Left to
-                        last
+                        M: Something Latest, GrowEnv: Something new, S: All
                       </span>
                     </span>
                   </ListItem>
@@ -229,44 +228,59 @@ export default function ProfileCard() {
   }
   return (
     <Card className="profileCard">
-      <Grid container spacing={3} style={{ padding: "20px 40px 20px 40px" }}>
-        {Object.entries(profileData).map(([key, value]) => {
-          return (
-            <Grid item xs={2} key={key}>
-              <FormColumn obj={value} />
+      <Grid container>
+        <Grid item xs={1} className="cardTag">
+          <span className="verticalText">{profileData.lexiconId.value}</span>
+        </Grid>
+
+        <Grid item xs={11}>
+          <Grid
+            container
+            spacing={3}
+            style={{ padding: "20px 40px 20px 40px" }}
+          >
+            {Object.entries(profileData).map(([key, value]) => {
+              return (
+                <Grid item xs={2} key={key}>
+                  <FormColumn obj={value} />
+                </Grid>
+              );
+            })}
+          </Grid>
+          <Divider variant="middle" />
+          <Grid
+            container
+            spacing={10}
+            direction="row"
+            style={{ padding: "20px 40px 20px 40px" }}
+          >
+            <Grid item xs={4}>
+              <Typography variant="subtitle2" color="primary">
+                <PersonaTree
+                  personaType="Breeder"
+                  profiles={breedingProfiles}
+                />
+              </Typography>
             </Grid>
-          );
-        })}
-      </Grid>
-      <Divider variant="middle" />
-      <Grid
-        container
-        spacing={10}
-        direction="row"
-        style={{ padding: "20px 40px 20px 40px" }}
-      >
-        <Grid item xs={4}>
-          <Typography variant="subtitle2" color="primary">
-            <PersonaTree personaType="Breeder" profiles={breedingProfiles} />
-          </Typography>
-        </Grid>
-        <Grid item xs={4}>
-          <Typography variant="subtitle2" color="primary">
-            <PersonaTree
-              personaType="Market Dev"
-              setSelectedProfile={setSelectedProfile}
-              profiles={marketDevProfiles}
-            />
-          </Typography>
-        </Grid>
-        <Grid item xs={4}>
-          <Typography variant="subtitle2" color="primary">
-            <PersonaTree
-              personaType="Marketing"
-              selectedProfile={values.selectedProfile}
-              profiles={marketingProfiles}
-            />
-          </Typography>
+            <Grid item xs={4}>
+              <Typography variant="subtitle2" color="primary">
+                <PersonaTree
+                  personaType="Market Dev"
+                  setSelectedProfile={setSelectedProfile}
+                  profiles={marketDevProfiles}
+                />
+              </Typography>
+            </Grid>
+            <Grid item xs={4}>
+              <Typography variant="subtitle2" color="primary">
+                <PersonaTree
+                  personaType="Marketing"
+                  selectedProfile={values.selectedProfile}
+                  profiles={marketingProfiles}
+                />
+              </Typography>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </Card>

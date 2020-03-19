@@ -3,6 +3,10 @@
     box-shadow: rgba(0, 0, 0, 0.55) 0px 6px 10px 0px, rgba(0, 0, 0, 0.12) 0px 1px 18px 0px, rgba(0, 0, 0, 0) 0px 3px 5px -1px !important;
 }
 
+.profileCard:hover {
+    box-shadow: none !important
+}
+
 .Zoom {
     transition: transform .2s;
 }
@@ -10,3 +14,19 @@
 .Zoom:hover {
     transform: scale(1.2);
   }
+
+  .verticalText {
+	transform: rotate(270deg);
+    float: left;
+    margin-left: -29px;
+    color: whitesmoke;
+}
+
+.cardTag {
+    max-width: 50px !important;
+    display: flex !important;
+    align-items: center !important;
+    background: #bdc3c7;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+}
