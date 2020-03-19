@@ -119,10 +119,10 @@ function PersonaTree(props) {
           defaultExpandIcon={<ChevronRightIcon />}
         >
           <TreeItem nodeId="0" label={`${personaType} Profiles`}>
-            <List dense style={{ marginTop: "-5px" }}>
+            <Grid container direction="row" style={{ marginLeft: "15px" }}>
               {profiles.map((profile, index) => {
                 return (
-                  <ListItem className="Zoom" key={index}>
+                  <Grid item xs={6} className="Zoom" key={index}>
                     <span>
                       <span
                         style={{
@@ -147,13 +147,13 @@ function PersonaTree(props) {
                           top: "-8px"
                         }}
                       >
-                        M: Something Latest, GrowEnv: Something new, S: All
+                        M: All, GrowEnv: All, S: All
                       </span>
                     </span>
-                  </ListItem>
+                  </Grid>
                 );
               })}
-            </List>
+            </Grid>
           </TreeItem>
         </TreeView>
       )
@@ -262,6 +262,7 @@ export default function ProfileCard() {
                 />
               </Typography>
             </Grid>
+
             <Grid item xs={4}>
               <Typography variant="subtitle2" color="primary">
                 <PersonaTree
