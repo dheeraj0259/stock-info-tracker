@@ -17,7 +17,7 @@ import FilterListIcon from "@material-ui/icons/FilterList";
 import Stocktable from "../components/StockTable";
 import FilterDrawer from "../components/FilterDrawer";
 
-class Home extends Component {
+class Dashboard extends Component {
   constructor() {
     super();
     this.state = { showFilter: false };
@@ -122,4 +122,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, null)(Home);
+export default connect(mapStateToProps, null)(Dashboard);
