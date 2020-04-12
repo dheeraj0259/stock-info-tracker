@@ -58,8 +58,14 @@ class Home extends Component {
         </Grid>
 
         <Grid item xs={12} style={{ padding: "0 20px 0 20px", marginTop: 10 }}>
-          {profiles.map(item => {
-            return <ProfileCard key={item} style={{ marginTop: 100 }} />;
+          {profiles.map((item, index) => {
+            return (
+              <ProfileCard
+                key={item}
+                style={{ marginTop: 100 }}
+                cardStyle={index % 2 === 0 ? "cardTag" : "alternateCardTag"}
+              />
+            );
           })}
         </Grid>
       </Grid>

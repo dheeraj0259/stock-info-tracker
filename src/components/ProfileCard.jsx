@@ -49,12 +49,12 @@ const profileData = {
 const breedingProfiles = ["Breeding 1"];
 const marketDevProfiles = ["Market dev 1", "market dev 2", "market dev 3"];
 const marketingProfiles = [
-  "marketing 1",
-  "marketing 2",
-  "marketing 3",
-  "marketing 4",
-  "marketing 5",
-  "marketing 6"
+  "mkt 1",
+  "mkt 2",
+  "mkt 3",
+  "mkt 4",
+  "mkt 5",
+  "mkt 6"
 ];
 
 function FormColumn(props) {
@@ -215,10 +215,12 @@ function PersonaTree(props) {
   );
 }
 
-export default function ProfileCard() {
+export default function ProfileCard(props) {
   const [values, setValues] = React.useState({
     selectedProfile: ""
   });
+
+  const { cardStyle } = props;
 
   function setSelectedProfile(profile) {
     setValues({
@@ -229,7 +231,7 @@ export default function ProfileCard() {
   return (
     <Card className="profileCard">
       <Grid container>
-        <Grid item xs={1} className="cardTag">
+        <Grid item xs={1} className={cardStyle}>
           <span className="verticalText">{profileData.lexiconId.value}</span>
         </Grid>
 
