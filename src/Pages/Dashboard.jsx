@@ -25,7 +25,8 @@ class Dashboard extends Component {
 
   componentDidMount() {
     const { history, userAccess } = this.props;
-     if (!userAccess) setTimeout(() => history.push("/stock-info-tracker/signin"), 5000);
+    if (!userAccess)
+      setTimeout(() => history.push("/stock-info-tracker/signin"), 5000);
   }
 
   render() {
@@ -115,15 +116,15 @@ class Dashboard extends Component {
           </Grid>
         </Grid>
       );
-    }
+    };
 
     const NoAccessMessage = () => {
       return (
         <div style={{ marginTop: 50 }}>
           <h1>No User Access redirecting in 5 sec</h1>
         </div>
-      )
-    }
+      );
+    };
 
     return userAccess ? renderDashboardContent() : NoAccessMessage();
   }
